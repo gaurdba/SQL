@@ -5,6 +5,21 @@ COL object_name FOR a50
 COL subobject_name FOR a50
 col object_id for a20
 SET VERIFY OFF
+DEFINE SID=&&1
+DEFINE INST_ID=&&2
+DEFINE SERIAL=&&3
+DEFINE SQL_ID=&&4
+
+PROMPT ***************************************************
+PROMPT * ASH SQLid Object Scan
+PROMPT *
+PROMPT * Input Parameter:
+PROMPT *   SID             = "&&SID"
+PROMPT *   Instance ID     = "&&INST_ID"
+PROMPT *   Serial#         = "&&SERIAL"
+PROMPT *   SQL Id          = "&&SQL_ID"
+PROMPT ***************************************************
+
 WITH obj AS (
     SELECT /*+ parallel(4) */
         current_obj#   object_id,
