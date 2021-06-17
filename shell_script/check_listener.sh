@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/ksh
 # Author	:Sanjay Gaur
 # Purpose	:Show the connection Details for given Start & End Timestamp
 #
