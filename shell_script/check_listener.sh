@@ -42,15 +42,15 @@ fi
 sed -n "$ini_line","$end_line"p $list_file >/tmp/list.log
 if [ $# -lt 3 ]
 then
-	for srv in `cat /tmp/list.log|awk -F "SERVICE_NAME=" '{print $2}'|awk -F")" '{print $1}'|grep -v ^$|uniq`
+	for srv in `cat /tmp/list.log|awk -F "SERVICE_NAME=" '{print $2}'|awk -F")" '{print $1}'|grep -v ^$|sort|uniq`
 	do
 		echo "Total Connection From Service $srv==" `grep -c $srv /tmp/list.log`
 	done
-	for prg in `cat /tmp/list.log|awk -F "PROGRAM=" '{print $2}'|awk -F")" '{print $1}'|grep -v ^$|uniq`
+	for prg in `cat /tmp/list.log|awk -F "PROGRAM=" '{print $2}'|awk -F")" '{print $1}'|grep -v ^$|sort|uniq`
 	do
 		echo "Total Connection From $prg Program==" `grep -c $srv /tmp/list.log`
 	done
-	for hst in `cat /tmp/list.log|awk -F "HOST=" '{print $2}'|awk -F")" '{print $1}'|grep -v ^$|uniq`
+	for hst in `cat /tmp/list.log|awk -F "HOST=" '{print $2}'|awk -F")" '{print $1}'|grep -v ^$|sort|uniq`
 	do
 		echo "Total Connection From $hst Host==" `grep -c $srv /tmp/list.log`
 	done
